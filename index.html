@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tesla</title>
+</head>
+
+<body>
+
+    <h1>Ma Tesla</h1>
+
+    <div id="resultat">
+        Chargement...
+    </div>
+
+    <script>
+
+        fetch("data/tesla.json")
+            .then(response => response.json())
+            .then(data => {
+
+                document.getElementById("resultat").innerHTML = `
+                    <p><strong>Modèle :</strong> ${data.vehicle.model}</p>
+                    <p><strong>Batterie :</strong> ${data.battery.level} %</p>
+                    <p><strong>Autonomie :</strong> ${data.battery.range_km} km</p>
+                    <p><strong>Kilométrage :</strong> ${data.vehicle_state.odometer_km} km</p>
+                    <p><strong>Température extérieure :</strong> ${data.temperature.outside_c} °C</p>
+                    <p><strong>Dernière mesure :</strong> ${data.timestamp}</p>
+                `;
+
+            })
+            .catch(error => {
+
+                document.getElementById("resultat").innerHTML =
+                    "Erreur : " + error;
+
+            });
+
+    </script>
+
+</body>
+
+</html>
