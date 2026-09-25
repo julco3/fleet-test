@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Authentification Tesla</title>
+</head>
+
+<body>
+    <h1>Authentification Tesla</h1>
+
+    <p id="message">Récupération du code...</p>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get("code");
+        const state = params.get("state");
+        const error = params.get("error");
+
+        const message = document.getElementById("message");
+
+        if (error) {
+            message.textContent = "Erreur Tesla : " + error;
+        }
+        else if (code) {
+            message.textContent =
+                "Authentification réussie. Le code a été reçu.";
+            
+            console.log("Code Tesla :", code);
+            console.log("State :", state);
+        }
+        else {
+            message.textContent =
+                "Aucun code d'authentification reçu.";
+        }
+    </script>
+</body>
+</html>
