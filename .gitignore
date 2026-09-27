@@ -1,3 +1,5 @@
 secrets.json
 tokens.json
+raw.json
+private-key.pem
 __pycache__/
