@@ -2,4 +2,5 @@ secrets.json
 tokens.json
 raw.json
 private-key.pem
+partner_token.json
 __pycache__/
